@@ -10,3 +10,5 @@ Demonstrate competency in C#, JavaScript, and ASP.NET.
 - Reads the Assessment.csv file server side and saves the entire files contents into the top div on page.
 
 - Button click that executes a client side function that parses the text and places the 3rd component into the second bottom div.
+
+- submit pull request
