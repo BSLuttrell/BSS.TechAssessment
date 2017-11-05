@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
 
 <!DOCTYPE html>
 
@@ -7,17 +7,18 @@
     <title></title>
 </head>
 <body>
-
-
     <script type="text/javascript">
-        function stuff() {
+        function stuff(e) {
+            var topDiv = document.getElementById("topDiv");
+            var bottomDiv = document.getElementById("bottomDiv");
 
-            alert("You should be parsing stuff here!!!");
-
+            bottomDiv.innerHTML = topDiv.innerHTML.split(",")[2];
+  
+            return false;
         }
     </script>
 
-    <div id="topDiv"style="border:1px solid black">
+    <div id="topDiv" style="border:1px solid black" runat="server">
         Container 1
     </div>
     <div id="bottomDiv"style="border:1px solid black">
@@ -25,9 +26,7 @@
     </div>
     
     <form id="form1" runat="server">
-
         <asp:LinkButton ID="LinkButton1" OnClientClick="return stuff()" runat="server" Width="200" Height="50">Click</asp:LinkButton>
-
     </form>
 </body>
 </html>
