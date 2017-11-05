@@ -9,25 +9,25 @@
 <body>
 
 
-  <script type="text/javascript">
-      function stuff() {
+    <script type="text/javascript">
+        function stuff() {
 
-          var div1 = document.getElementById('topDiv').innerHTML;
-          var array = div1.split(',');
-          var div2 = array[2].innerHTML;
-          document.getElementById('bottomDiv').innerHTML = array[2];
+            alert("You should be parsing stuff here!!!");
 
-      }
+        }
     </script>
 
-    <div id="topDiv" runat="server" style="border:1px solid black">
+    <div id="topDiv"style="border:1px solid black">
         Container 1
     </div>
     <div id="bottomDiv"style="border:1px solid black">
         Container 2
-    </div>    
-    <form id="form1">
-        <button type="button" onclick="stuff()" value="Submit">Click</button>
+    </div>
+    
+    <form id="form1" runat="server">
+
+        <asp:LinkButton ID="LinkButton1" OnClientClick="return stuff()" runat="server" Width="200" Height="50">Click</asp:LinkButton>
+
     </form>
 </body>
 </html>
