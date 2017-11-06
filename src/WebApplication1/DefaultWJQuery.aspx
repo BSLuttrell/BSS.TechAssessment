@@ -11,12 +11,30 @@
 
     <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script>
-    $(function() {
-        $("#btn").on("click", function() {
- 
-            alert("You should be parsing stuff here, you chose the jquery page so put it to work!!!");
+        var file = "Assessment.csv"
+
+        // Button click event that loads data into top div
+        $(function () {
+            $("#btnLoad").on("click", function () {
+                $.get(file, function (data) {
+                    var data = data.split(',')
+                    var topDiv = $("#topDiv")
+                    topDiv.text('')
+                    for (var d in data) { topDiv.append("<p>" + data[d] + "</p>") }
+                })
+            })
+        })
+
+        // Button click event that adds third to bottom div and remove from top div
+        $(function () {
+            $("#btn").on("click", function () {
+                $.get(file, function (data) {
+                    var d = data.split(',')
+                    $("#bottomDiv").text(d[2])
+                    $("#topDiv p").filter(":contains('" + d[2] + "')").remove()
+                });
+            });
         });
-    });
     </script>
 
 
@@ -27,7 +45,8 @@
         Container 2
     </div>
 
-    <input type="button" id="btn" />
+    <input type="button" id="btnLoad" style="padding: 1em; margin-top: 10px;" value="Load"/>
+    <input type="button" id="btn" style="padding: 1em; margin-top: 10px;" value="Remove"/>
 
     <form id="form1" runat="server">
     </form>
